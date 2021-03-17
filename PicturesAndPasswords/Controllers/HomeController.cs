@@ -71,6 +71,11 @@ namespace PicturesAndPasswords.Controllers
             {
                 db.UpdateImageViews(Id);
             }
+            if (!InSession && CorrectPassword)
+            {
+                ids.Add(Id);
+                HttpContext.Session.Set("Ids", ids);
+            }
             ViewImageViewModel vm = new ViewImageViewModel
             {
                 ShowMessage = message,

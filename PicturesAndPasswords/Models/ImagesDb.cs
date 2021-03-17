@@ -13,26 +13,6 @@ namespace PicturesAndPasswords.Models
         {
             _connectionString = connectionString;
         }
-        public List<Image> GetImages()
-        {
-            using SqlConnection connection = new SqlConnection(_connectionString);
-            using SqlCommand cmd = connection.CreateCommand();
-            cmd.CommandText = "select * from images";
-            connection.Open();
-            SqlDataReader reader = cmd.ExecuteReader();
-            List<Image> images = new List<Image>();
-            while (reader.Read())
-            {
-                images.Add(new Image
-                {
-                    Id = (int)reader["id"],
-                    Name = (string)reader["name"],
-                    Password = (string)reader["password"],
-                    Views = (int)reader["views"]
-                });
-            }
-            return images;
-        }
         public void AddImage(Image image)
         {
             using SqlConnection connection = new SqlConnection(_connectionString);

@@ -11,8 +11,6 @@ namespace PicturesAndPasswords.Models
     public class ViewImageViewModel
     {
         public Image Image { get; set; }
-        //public bool InSession { get; set; }
-        //public bool CorrectPassword { get; set; }
         public bool ShowImage { get; set; }
         public bool ShowMessage { get; set; }
     }

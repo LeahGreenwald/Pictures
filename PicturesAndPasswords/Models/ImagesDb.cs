@@ -20,7 +20,7 @@ namespace PicturesAndPasswords.Models
             cmd.CommandText = "insert into images (name, password, views) values (@name, @password, @views) select SCOPE_IDENTITY()";
             cmd.Parameters.AddWithValue("@name", image.Name);
             cmd.Parameters.AddWithValue("@password", image.Password);
-            cmd.Parameters.AddWithValue("@views", 1);
+            cmd.Parameters.AddWithValue("@views", 0);
             connection.Open();
             image.Id = (int)(decimal)cmd.ExecuteScalar();
         }

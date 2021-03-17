@@ -1,0 +1,7 @@
+﻿@model UploadViewModel 
+
+<div class="jumbotron">
+    <h1>Thank you for uploading your image. Here is a link to share with your friends</h1>
+    <a href="https://localhost:44383/home/viewImage?id=@Model.Id">https://localhost:44383/home/viewImage?id=@Model.Id</a>
+    <h1>Make sure to give them the password of "@Model.Password"</h1>
+</div>

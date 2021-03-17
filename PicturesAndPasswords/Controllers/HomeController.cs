@@ -61,11 +61,8 @@ namespace PicturesAndPasswords.Controllers
             var image = db.GetImage(Id);
 
             bool CorrectPassword = image.Password == Password;
-            bool message = false;
-            if (Password != null)
-            {
-                message = true;
-            }
+            var message = (TempData["message"] != null);
+            
             bool showImage = InSession || CorrectPassword;
             if (showImage)
             {
@@ -82,6 +79,16 @@ namespace PicturesAndPasswords.Controllers
                 ShowImage = showImage,
                 Image = image
             };
+            if (TempData["message"] != null)
+            {
+                return View(vm);
+            }
+            if (Password != null)
+            {
+                TempData["message"] = "Invalid password";
+                message = true;
+                return Redirect($"/home/viewImage?id={Id}");
+            }
             return View(vm);  
         }
     }
